@@ -11,19 +11,32 @@ export function MainLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Box sx={{ height: '100vh', maxWidth: '100vw' }}>
+      <Box sx={{ height: '100vh', maxWidth: '100vw', position: 'relative' }}>
+        <Box
+          component="img"
+          src="/noise_effect.webp"
+          alt="noise effect"
+          sx={{
+            position: 'fixed',
+            inset: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 50,
+            pointerEvents: 'none',
+            objectFit: 'cover',
+          }}
+        />
         <AppHeader />
         <Box
-          component="main"
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            flex: 1,
-            marginTop: '1rem',
-            padding: 3,
-            ml: {
-              md: '15%',
-            },
+            width: '100%',
+            height: '100vh',
+            pt: 3,
+            position: 'relative',
+            bgcolor: 'black',
+            pl: 10,
           }}
         >
           {children}
