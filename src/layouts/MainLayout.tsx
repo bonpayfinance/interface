@@ -1,36 +1,62 @@
 import { Box } from '@mui/material';
 import React, { ReactNode } from 'react';
 
-// import { FeedbackModal } from 'src/layouts/FeedbackDialog';
-// import { AppFooter } from './AppFooter';
-import { AppHeader } from './AppHeader'; // Sidebar now
-// import TopBarNotify from './TopBarNotify';
+import { AppFooter } from './AppFooter';
+import { AppHeader } from './AppHeader';
 
 export function MainLayout({ children }: { children: ReactNode }) {
-  // const APP_BANNER_VERSION = '1.0.0';
-
   return (
-    <>
-      <Box sx={{ height: '100vh', maxWidth: '100vw' }}>
-        <AppHeader />
+    <Box
+      sx={{
+        display: 'flex',
+        minHeight: '100vh',
+        bgcolor: 'black',
+        position: 'relative',
+      }}
+    >
+      <AppHeader />
+
+      {/* Main content wrapper */}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          flexGrow: 1,
+          minHeight: '100vh',
+          width: '100%',
+          ml: { md: '240px' },
+          position: 'relative',
+        }}
+      >
         <Box
-          component="main"
+          component="img"
+          src="/noise_effect.webp"
+          alt="noise effect"
+          sx={{
+            position: 'fixed',
+            inset: 0,
+            width: '100vw',
+            height: '100%',
+            minHeight: '100vh',
+            zIndex: 50,
+            pointerEvents: 'none',
+            objectFit: 'cover',
+          }}
+        />
+        <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            flex: 1,
-            marginTop: '1rem',
-            padding: 3,
-            ml: {
-              md: '15%',
-            },
+            flexGrow: 1,
+            minHeight: '100%',
+            pt: 3,
+            px: { xs: 2, md: 4 },
           }}
         >
-          {children}
+          <Box sx={{ flexGrow: 1 }}>{children}</Box>
+          <AppFooter />
         </Box>
-
-        {/* <AppFooter /> */}
       </Box>
-    </>
+    </Box>
   );
 }
